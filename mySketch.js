@@ -113,6 +113,9 @@ function draw() {
 			textSize(50);
 			textAlign(LEFT);
 			text("Draw with a Thousand People",40,40,windowWidth/2,200);
+			textSize(25);
+			text("1. Draw the object in the box on the bottom-right corner.",40,150,windowWidth/2,75);
+			text("2. Refresh to draw a different object.",40,200,windowWidth/2,75);
 		}
 		
 		beginShape();
