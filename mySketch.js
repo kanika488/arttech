@@ -9,6 +9,9 @@ let xPara=1;
 let yPara=5;
 let choice;
 let drawings;
+let lastInteractionTime = 0; // Timestamp of the last user interaction
+let inactivityThreshold = 20000; // Time threshold in milliseconds (e.g., 5 seconds)
+let drawn =0;
 
 function preload(){	
 	let index = floor(random(0, 6));
@@ -57,6 +60,8 @@ function setup() {
 function draw() {
 	if (mouseIsPressed) 
 	{
+		drawn=1;
+		lastInteractionTime = millis();
 		if (!drawing) 
 		{
 			drawing = true;
@@ -188,6 +193,12 @@ function draw() {
 					if(count > clicks.length) break;
 				}
 			}
+			// Check if the drawing is idle for too long
+			if (drawn){
+  let currentTime = millis();
+  if (currentTime - lastInteractionTime > inactivityThreshold) {
+    resetDrawing();
+  }}
 		}
 	
 		// strokeWeight(1);
@@ -244,9 +255,13 @@ function translateFunc(x,y,xOffset,yOffset, s){
 	return p;
 }
 
-let userDrawing = []; // Stores user strokes
-let referenceDrawings = []; // Stores multiple reference drawings
-let bestMatchIndex = -1; // Index of the best match
+function resetDrawing() {
+  userDrawing = []; // Clear user strokes
+  bestMatchIndex = -1; // Reset best match
+  background(255); // Clear the canvas
+	fill(0);
+	text("Reload page to start drawing!", 40,40,2*windowWidth,200);
+}
 
 
 
