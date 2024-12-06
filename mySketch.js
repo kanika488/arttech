@@ -61,11 +61,18 @@ function draw() {
 		{
 			drawing = true;
 			numStrokes += 1;
-			clicks[clicks.length] = [pmouseX, pmouseY, mouseX, mouseY, 1]
+			
+			if(pmouseX > 3*windowWidth/4+31 && pmouseY > 3*windowHeight/4-10){
+				clicks[clicks.length] = [pmouseX, pmouseY, mouseX, mouseY, 1];
+			}
+			
 		}
 		else
 		{
-			clicks[clicks.length] = [pmouseX, pmouseY, mouseX, mouseY, 0];
+			if(pmouseX > 3*windowWidth/4+31 && pmouseY > 3*windowHeight/4-10){
+				clicks[clicks.length] = [pmouseX, pmouseY, mouseX, mouseY, 0];
+			}
+			// clicks[clicks.length] = [pmouseX, pmouseY, mouseX, mouseY, 0];
 		}
 	} 
 	else 
@@ -159,12 +166,13 @@ function draw() {
 				beginShape();
 			}
 			let userVect=createVector(clicks[i][0], clicks[i][1]);
-			vertex(userVect.x,userVect.y);
+			if(userVect.x > 3*windowWidth/4+31 && userVect.y > 3*windowHeight/4-10){
+				vertex(userVect.x,userVect.y);
+			}
 		}
 			endShape();
 		}
 }
-
 function translateFunc(x,y,xOffset,yOffset){
 	x=map(x,0,255,0,windowHeight/numDrawings**0.5);
 	y=map(y,0,255,0,windowHeight/numDrawings**0.5-5);
