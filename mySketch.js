@@ -54,7 +54,8 @@ function setup() {
 		text("Draw with a Thousand People",40,40,2*windowWidth,200);
 		textSize(25);
 		text("1. Draw the object specified in the box on the bottom-right corner.",40,150,windowWidth,75);
-		text("2. Refresh to draw a different object.",40,200,windowWidth,75);
+		text("2. The most similar drawing to yours is highlighted.",40,200,windowWidth,75);
+		text("3. Refresh to draw a different object.",40,250,windowWidth,75);
 }
 
 function draw() {
