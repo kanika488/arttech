@@ -48,10 +48,10 @@ function setup() {
 		textSize(50);
 		textAlign(LEFT);
 		fill(0);
-		text("Draw with a Thousand People",40,40,2*windowWidth/3,200);
+		text("Draw with a Thousand People",40,40,2*windowWidth,200);
 		textSize(25);
-		text("1. Draw the object specified in the box on the bottom-right corner.",40,150,windowWidth/2,75);
-		text("2. Refresh to draw a different object.",40,200,windowWidth/2,75);
+		text("1. Draw the object specified in the box on the bottom-right corner.",40,150,windowWidth,75);
+		text("2. Refresh to draw a different object.",40,200,windowWidth,75);
 }
 
 function draw() {
