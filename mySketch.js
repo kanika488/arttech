@@ -4,7 +4,7 @@ let drawing = false;
 let clicks = [];
 let incarray = [4,2,3,2,2,4];
 let increment;
-let numDrawings=900;
+let numDrawings=625;
 let xPara=1;
 let yPara=5;
 let choice;
@@ -31,6 +31,27 @@ function setup() {
 		// console.log(drawings[index1]);
 	}
 	drawings = shuffle(drawings);
+	
+	strokeWeight(1);
+	stroke(0);
+	rectMode(CORNERS);
+	fill(255);
+	rect(3*windowWidth/4+31,3*windowHeight/4-10,windowWidth,windowHeight);
+	
+		textAlign(CENTER);
+		stroke(0);
+
+		textSize(20);
+		fill(255,0,0);
+		let title="Draw "+choice+ " here";
+		text(title,(3*windowWidth/4)+10,3*windowHeight/4,windowWidth/4,150);
+		textSize(50);
+		textAlign(LEFT);
+		fill(0);
+		text("Draw with a Thousand People",40,40,2*windowWidth/3,200);
+		textSize(25);
+		text("1. Draw the object specified in the box on the bottom-right corner.",40,150,windowWidth/2,75);
+		text("2. Refresh to draw a different object.",40,200,windowWidth/2,75);
 }
 
 function draw() {
@@ -54,7 +75,9 @@ function draw() {
 	
 	if(frameCount % 5==0)
 		{
+			if(clicks.length!=0){
 			background(255);
+			}
 			let parameters = [];
 			let xOffset = xPara;
 			let yOffset = yPara;
@@ -98,26 +121,33 @@ function draw() {
 			}
 		}
 	
+		// strokeWeight(1);
+		// stroke(0);
+		// rectMode(CORNERS);
+		// fill(255);
+		// rect(3*windowWidth/4+31,3*windowHeight/4-10,windowWidth,windowHeight);
+		// if(clicks.length==0){
+		// 	textAlign(CENTER);
+		// 	stroke(0);
+		// 	fill(0);
+		// 	textSize(35);
+		// 	// fill(255,0,0)
+		// 	let title="Draw "+choice+ " here";
+		// 	text(title,3*windowWidth/4,3*windowHeight/4,windowWidth/4,200);
+		// 	textSize(50);
+		// 	textAlign(LEFT);
+		// 	text("Draw with a Thousand People",40,40,windowWidth/2,200);
+		// 	textSize(25);
+		// 	text("1. Draw the object specified in the box on the bottom-right corner.",40,150,windowWidth/2,75);
+		// 	text("2. Refresh to draw a different object.",40,200,windowWidth/2,75);
+		// }
+		
+		if(clicks.length!=0){
 		strokeWeight(1);
 		stroke(0);
 		rectMode(CORNERS);
 		fill(255);
 		rect(3*windowWidth/4+31,3*windowHeight/4-10,windowWidth,windowHeight);
-		if(clicks.length==0){
-			textAlign(CENTER);
-			stroke(0);
-			fill(0);
-			textSize(16);
-			let title="Draw "+choice;
-			text(title,3*windowWidth/4,3*windowHeight/4,windowWidth/4,200);
-			textSize(50);
-			textAlign(LEFT);
-			text("Draw with a Thousand People",40,40,windowWidth/2,200);
-			textSize(25);
-			text("1. Draw the object in the box on the bottom-right corner.",40,150,windowWidth/2,75);
-			text("2. Refresh to draw a different object.",40,200,windowWidth/2,75);
-		}
-		
 		beginShape();
 		for(let i=0; i<clicks.length; i++){
 			strokeWeight(5);
@@ -132,6 +162,7 @@ function draw() {
 			vertex(userVect.x,userVect.y);
 		}
 			endShape();
+		}
 }
 
 function translateFunc(x,y,xOffset,yOffset){
